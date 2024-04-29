@@ -142,7 +142,7 @@ require("navbar.php");
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT * FROM posts";
+    $sql = "SELECT * FROM posts WHERE status = 'published'";
     $result = $conn->query($sql);
 
     if ($result-> num_rows > 0) {
@@ -175,11 +175,6 @@ require("navbar.php");
 // session_start();
 
 if (isset($_POST['insert'])) {
-
-    // if(!isset($_SESSION['name']) || $_SESSION['name'] !== true) {
-    //     header("Location: login.php");
-    //     exit;
-    // }
 
     $title = $_POST['title'];
     $content = $_POST['content'];
